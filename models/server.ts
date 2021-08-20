@@ -1,6 +1,6 @@
 import express, { Application } from 'express';
-import userRoutes from '../routes/usuarios';
 import cors from 'cors';
+import images from '../routes/images';
 
 class Server{
     private app: Application;
@@ -12,7 +12,6 @@ class Server{
         this.app = express();
         this.port = process.env.PORT || '8000';
         this.middlewares();
-        // definir rutas
         this.routes();
     }
 
@@ -28,7 +27,7 @@ class Server{
     }
 
     routes() {
-        this.app.use(this.apiPaths.usuarios, userRoutes);
+        this.app.use('/api/images', images);
     }
 
     listen(){
